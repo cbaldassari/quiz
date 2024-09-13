@@ -1,0 +1,481 @@
+
+    <!DOCTYPE html>
+    <html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Quiz</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f0f0f5;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            h1 {
+                color: #007bff;
+                margin-bottom: 20px;
+            }
+
+            .quiz-container {
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                max-width: 100%;
+                width: 100%;
+                margin-bottom: 100px;
+            }
+
+            .question {
+                margin-bottom: 20px;
+                padding: 15px;
+                border-radius: 6px;
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+            }
+
+            .options {
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .options label {
+                margin-bottom: 8px;
+            }
+
+            .sticky-container {
+                position: sticky;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                padding: 10px;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                max-width: 600px;
+            }
+
+            .result {
+                font-size: 18px;
+                font-weight: bold;
+                margin-left: 10px;
+            }
+
+            .correct {
+                background-color: #d4edda;
+                border-left: 5px solid #28a745;
+            }
+
+            .incorrect {
+                background-color: #f8d7da;
+                border-left: 5px solid #dc3545;
+            }
+
+            button {
+                padding: 12px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:disabled {
+                background-color: #aaa;
+                cursor: not-allowed;
+            }
+
+            button:hover:enabled {
+                background-color: #45a049;
+            }
+
+            @media (max-width: 600px) {
+                .quiz-container {
+                    padding: 10px;
+                }
+
+                button {
+                    font-size: 14px;
+                    padding: 10px;
+                }
+
+                .result {
+                    font-size: 16px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Quiz di Reti Informatiche</h1>
+        <div class="quiz-container">
+            <form id="quizForm">
+    <div class="question" id="q0">
+<p><b>1. What is the function of a router?</b></p>
+<div class="options">
+<label><input type="radio" name="q0" value="1"> Directs traffic between devices</label>
+<label><input type="radio" name="q0" value="2"> Provides internet access</label>
+<label><input type="radio" name="q0" value="3"> Extends Wi-Fi coverage</label>
+<label><input type="radio" name="q0" value="4"> Stores data</label>
+</div>
+</div>
+<div class="question" id="q1">
+<p><b>2. Which device is used to extend Wi-Fi coverage?</b></p>
+<div class="options">
+<label><input type="radio" name="q1" value="1"> Modem</label>
+<label><input type="radio" name="q1" value="2"> Access Point</label>
+<label><input type="radio" name="q1" value="3"> Router</label>
+<label><input type="radio" name="q1" value="4"> Switch</label>
+</div>
+</div>
+<div class="question" id="q2">
+<p><b>3. What is an example of a network protocol?</b></p>
+<div class="options">
+<label><input type="radio" name="q2" value="1"> HTTP</label>
+<label><input type="radio" name="q2" value="2"> Bluetooth</label>
+<label><input type="radio" name="q2" value="3"> USB</label>
+<label><input type="radio" name="q2" value="4"> Firewall</label>
+</div>
+</div>
+<div class="question" id="q3">
+<p><b>4. Which component stores data in a network?</b></p>
+<div class="options">
+<label><input type="radio" name="q3" value="1"> Switch</label>
+<label><input type="radio" name="q3" value="2"> Router</label>
+<label><input type="radio" name="q3" value="3"> Server</label>
+<label><input type="radio" name="q3" value="4"> Access Point</label>
+</div>
+</div>
+<div class="question" id="q4">
+<p><b>5. What is the purpose of a firewall in a network?</b></p>
+<div class="options">
+<label><input type="radio" name="q4" value="1"> To block viruses</label>
+<label><input type="radio" name="q4" value="2"> To secure network connections</label>
+<label><input type="radio" name="q4" value="3"> To enhance speed</label>
+<label><input type="radio" name="q4" value="4"> To print documents</label>
+</div>
+</div>
+<div class="question" id="q5">
+<p><b>6. What type of network covers a small geographic area like an office?</b></p>
+<div class="options">
+<label><input type="radio" name="q5" value="1"> WAN</label>
+<label><input type="radio" name="q5" value="2"> PAN</label>
+<label><input type="radio" name="q5" value="3"> MAN</label>
+<label><input type="radio" name="q5" value="4"> LAN</label>
+</div>
+</div>
+<div class="question" id="q6">
+<p><b>7. What does TCP/IP stand for?</b></p>
+<div class="options">
+<label><input type="radio" name="q6" value="1"> Transmission Control Protocol/Internet Protocol</label>
+<label><input type="radio" name="q6" value="2"> Telecommunication Protocol/Internet Protocol</label>
+<label><input type="radio" name="q6" value="3"> Traffic Control Protocol/Internet Protocol</label>
+<label><input type="radio" name="q6" value="4"> Transmission Communication Protocol/Internet Protocol</label>
+</div>
+</div>
+<div class="question" id="q7">
+<p><b>8. Which protocol is used to send emails?</b></p>
+<div class="options">
+<label><input type="radio" name="q7" value="1"> FTP</label>
+<label><input type="radio" name="q7" value="2"> HTTP</label>
+<label><input type="radio" name="q7" value="3"> SMTP</label>
+<label><input type="radio" name="q7" value="4"> TCP</label>
+</div>
+</div>
+<div class="question" id="q8">
+<p><b>9. What is the main function of a switch?</b></p>
+<div class="options">
+<label><input type="radio" name="q8" value="1"> Directs traffic between networks</label>
+<label><input type="radio" name="q8" value="2"> Connects devices within the same network</label>
+<label><input type="radio" name="q8" value="3"> Provides internet access</label>
+<label><input type="radio" name="q8" value="4"> Stores files</label>
+</div>
+</div>
+<div class="question" id="q9">
+<p><b>10. What device is responsible for converting internet signals for your network?</b></p>
+<div class="options">
+<label><input type="radio" name="q9" value="1"> Switch</label>
+<label><input type="radio" name="q9" value="2"> Access Point</label>
+<label><input type="radio" name="q9" value="3"> Modem</label>
+<label><input type="radio" name="q9" value="4"> Router</label>
+</div>
+</div>
+<div class="question" id="q10">
+<p><b>11. Which of these is a wireless technology?</b></p>
+<div class="options">
+<label><input type="radio" name="q10" value="1"> Ethernet</label>
+<label><input type="radio" name="q10" value="2"> Fiber optic</label>
+<label><input type="radio" name="q10" value="3"> Bluetooth</label>
+<label><input type="radio" name="q10" value="4"> DSL</label>
+</div>
+</div>
+<div class="question" id="q11">
+<p><b>12. What is the purpose of DNS?</b></p>
+<div class="options">
+<label><input type="radio" name="q11" value="1"> To translate domain names into IP addresses</label>
+<label><input type="radio" name="q11" value="2"> To store web pages</label>
+<label><input type="radio" name="q11" value="3"> To encrypt data</label>
+<label><input type="radio" name="q11" value="4"> To control traffic</label>
+</div>
+</div>
+<div class="question" id="q12">
+<p><b>13. What is the most common topology in modern networks?</b></p>
+<div class="options">
+<label><input type="radio" name="q12" value="1"> Bus</label>
+<label><input type="radio" name="q12" value="2"> Star</label>
+<label><input type="radio" name="q12" value="3"> Ring</label>
+<label><input type="radio" name="q12" value="4"> Mesh</label>
+</div>
+</div>
+<div class="question" id="q13">
+<p><b>14. Which protocol is used for secure web browsing?</b></p>
+<div class="options">
+<label><input type="radio" name="q13" value="1"> HTTP</label>
+<label><input type="radio" name="q13" value="2"> FTP</label>
+<label><input type="radio" name="q13" value="3"> TCP</label>
+<label><input type="radio" name="q13" value="4"> HTTPS</label>
+</div>
+</div>
+<div class="question" id="q14">
+<p><b>15. Which type of network spans a city?</b></p>
+<div class="options">
+<label><input type="radio" name="q14" value="1"> LAN</label>
+<label><input type="radio" name="q14" value="2"> PAN</label>
+<label><input type="radio" name="q14" value="3"> MAN</label>
+<label><input type="radio" name="q14" value="4"> WAN</label>
+</div>
+</div>
+<div class="question" id="q15">
+<p><b>16. What is the smallest type of network?</b></p>
+<div class="options">
+<label><input type="radio" name="q15" value="1"> WAN</label>
+<label><input type="radio" name="q15" value="2"> MAN</label>
+<label><input type="radio" name="q15" value="3"> PAN</label>
+<label><input type="radio" name="q15" value="4"> LAN</label>
+</div>
+</div>
+<div class="question" id="q16">
+<p><b>17. What is the primary function of an IP address?</b></p>
+<div class="options">
+<label><input type="radio" name="q16" value="1"> Identify a device on the network</label>
+<label><input type="radio" name="q16" value="2"> Secure a network connection</label>
+<label><input type="radio" name="q16" value="3"> Enhance Wi-Fi speed</label>
+<label><input type="radio" name="q16" value="4"> Translate domain names</label>
+</div>
+</div>
+<div class="question" id="q17">
+<p><b>18. Which protocol is used to transfer files over a network?</b></p>
+<div class="options">
+<label><input type="radio" name="q17" value="1"> HTTP</label>
+<label><input type="radio" name="q17" value="2"> SMTP</label>
+<label><input type="radio" name="q17" value="3"> FTP</label>
+<label><input type="radio" name="q17" value="4"> DNS</label>
+</div>
+</div>
+<div class="question" id="q18">
+<p><b>19. What does the acronym URL stand for?</b></p>
+<div class="options">
+<label><input type="radio" name="q18" value="1"> Uniform Resource Link</label>
+<label><input type="radio" name="q18" value="2"> Universal Routing Language</label>
+<label><input type="radio" name="q18" value="3"> Uniform Resource Locator</label>
+<label><input type="radio" name="q18" value="4"> Unified Response Locator</label>
+</div>
+</div>
+<div class="question" id="q19">
+<p><b>20. Which component helps prevent unauthorized access to a network?</b></p>
+<div class="options">
+<label><input type="radio" name="q19" value="1"> Switch</label>
+<label><input type="radio" name="q19" value="2"> Modem</label>
+<label><input type="radio" name="q19" value="3"> Firewall</label>
+<label><input type="radio" name="q19" value="4"> Access Point</label>
+</div>
+</div>
+<div class="question" id="q20">
+<p><b>21. Which media is not used for network transmission?</b></p>
+<div class="options">
+<label><input type="radio" name="q20" value="1"> Ethernet cable</label>
+<label><input type="radio" name="q20" value="2"> Fiber optic</label>
+<label><input type="radio" name="q20" value="3"> Wi-Fi</label>
+<label><input type="radio" name="q20" value="4"> USB</label>
+</div>
+</div>
+<div class="question" id="q21">
+<p><b>22. What does the IP in TCP/IP stand for?</b></p>
+<div class="options">
+<label><input type="radio" name="q21" value="1"> Information Protocol</label>
+<label><input type="radio" name="q21" value="2"> Internet Protocol</label>
+<label><input type="radio" name="q21" value="3"> Internet Program</label>
+<label><input type="radio" name="q21" value="4"> Internal Protocol</label>
+</div>
+</div>
+<div class="question" id="q22">
+<p><b>23. Which protocol is responsible for ensuring that web pages load correctly?</b></p>
+<div class="options">
+<label><input type="radio" name="q22" value="1"> TCP</label>
+<label><input type="radio" name="q22" value="2"> HTTP</label>
+<label><input type="radio" name="q22" value="3"> DNS</label>
+<label><input type="radio" name="q22" value="4"> FTP</label>
+</div>
+</div>
+<div class="question" id="q23">
+<p><b>24. What does the acronym FTP stand for?</b></p>
+<div class="options">
+<label><input type="radio" name="q23" value="1"> File Transfer Program</label>
+<label><input type="radio" name="q23" value="2"> File Transfer Protocol</label>
+<label><input type="radio" name="q23" value="3"> Fast Transfer Program</label>
+<label><input type="radio" name="q23" value="4"> File Transport Protocol</label>
+</div>
+</div>
+<div class="question" id="q24">
+<p><b>25. What is the role of the switch in a star topology network?</b></p>
+<div class="options">
+<label><input type="radio" name="q24" value="1"> Control data transmission</label>
+<label><input type="radio" name="q24" value="2"> Direct traffic between devices</label>
+<label><input type="radio" name="q24" value="3"> Extend network range</label>
+<label><input type="radio" name="q24" value="4"> Store data</label>
+</div>
+</div>
+<div class="question" id="q25">
+<p><b>26. Which protocol is used for email transmission?</b></p>
+<div class="options">
+<label><input type="radio" name="q25" value="1"> HTTP</label>
+<label><input type="radio" name="q25" value="2"> DNS</label>
+<label><input type="radio" name="q25" value="3"> SMTP</label>
+<label><input type="radio" name="q25" value="4"> FTP</label>
+</div>
+</div>
+<div class="question" id="q26">
+<p><b>27. What does HTTP stand for?</b></p>
+<div class="options">
+<label><input type="radio" name="q26" value="1"> Hyper Text Transfer Protocol</label>
+<label><input type="radio" name="q26" value="2"> Hyper Transfer Protocol</label>
+<label><input type="radio" name="q26" value="3"> Hyper Transfer Text Program</label>
+<label><input type="radio" name="q26" value="4"> Hyper Text Telecommunication Protocol</label>
+</div>
+</div>
+<div class="question" id="q27">
+<p><b>28. Which protocol is used to securely transfer web pages?</b></p>
+<div class="options">
+<label><input type="radio" name="q27" value="1"> FTP</label>
+<label><input type="radio" name="q27" value="2"> DNS</label>
+<label><input type="radio" name="q27" value="3"> HTTP</label>
+<label><input type="radio" name="q27" value="4"> HTTPS</label>
+</div>
+</div>
+<div class="question" id="q28">
+<p><b>29. What is the purpose of NAT in a router?</b></p>
+<div class="options">
+<label><input type="radio" name="q28" value="1"> Extend Wi-Fi range</label>
+<label><input type="radio" name="q28" value="2"> Translate private IP addresses into public ones</label>
+<label><input type="radio" name="q28" value="3"> Enhance network speed</label>
+<label><input type="radio" name="q28" value="4"> Block malware</label>
+</div>
+</div>
+<div class="question" id="q29">
+<p><b>30. What is a MAN network used for?</b></p>
+<div class="options">
+<label><input type="radio" name="q29" value="1"> Connect devices within a city</label>
+<label><input type="radio" name="q29" value="2"> Connect personal devices</label>
+<label><input type="radio" name="q29" value="3"> Connect multiple countries</label>
+<label><input type="radio" name="q29" value="4"> Connect household devices</label>
+</div>
+</div>
+
+            </form>
+        </div>
+
+        <div class="sticky-container">
+            <button id="submitBtn" disabled>Submit</button>
+            <div id="result" class="result"></div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('quizForm');
+                const submitBtn = document.getElementById('submitBtn');
+                const resultDiv = document.getElementById('result');
+                const totalQuestions = 30;
+                const correctAnswers = [1, 2, 1, 3, 2, 4, 1, 3, 2, 3, 3, 1, 2, 4, 3, 3, 1, 3, 3, 3, 4, 2, 2, 2, 2, 3, 1, 4, 2, 1];
+                let quizSubmitted = false; // Stato del quiz sottomesso
+                
+                // Abilita il pulsante solo se tutte le domande hanno una risposta
+                form.addEventListener('change', function() {
+                    let answered = 0;
+                    for (let i = 0; i < totalQuestions; i++) {
+                        const options = document.getElementsByName('q' + i);
+                        for (let option of options) {
+                            if (option.checked) {
+                                answered++;
+                                break;
+                            }
+                        }
+                    }
+                    submitBtn.disabled = (answered !== totalQuestions);
+
+                    // Se il quiz è già stato sottomesso, aggiorna dinamicamente i colori
+                    if (quizSubmitted) {
+                        checkAnswers(); // Verifica e aggiorna i colori in tempo reale
+                    }
+                });
+
+                // Funzione per la verifica delle risposte
+                submitBtn.addEventListener('click', function() {
+                    quizSubmitted = true; // Imposta lo stato del quiz come sottomesso
+                    checkAnswers();
+                    // Disabilita il form dopo l'invio
+                    submitBtn.disabled = true;
+                });
+
+                // Funzione che controlla le risposte e aggiorna i colori
+                function checkAnswers() {
+                    let score = 0;
+                    correctAnswers.forEach((answer, index) => {
+                        const options = document.getElementsByName('q' + index);
+                        const questionDiv = document.getElementById('q' + index);
+                        
+                        // Rimuovi le classi esistenti prima di aggiungere quelle nuove
+                        questionDiv.classList.remove('correct', 'incorrect');
+                        
+                        let answeredCorrectly = false;
+
+                        options.forEach((option) => {
+                            if (option.checked && parseInt(option.value) === answer) {
+                                answeredCorrectly = true;
+                            }
+                        });
+
+                        if (answeredCorrectly) {
+                            score++;
+                            questionDiv.classList.add('correct');
+                        } else {
+                            questionDiv.classList.add('incorrect');
+                        }
+                    });
+
+                    // Mostra il punteggio senza il punto esclamativo
+                    resultDiv.textContent = `Hai ottenuto ${score} su ${totalQuestions}`;
+                }
+            });
+        </script>
+    </body>
+    </html>
+    
